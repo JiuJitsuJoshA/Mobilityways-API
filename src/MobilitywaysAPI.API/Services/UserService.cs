@@ -9,9 +9,9 @@ namespace MobilitywaysAPI.API.Services;
 
 public interface IUserService
 {
-    Task<Result> CreateUser(UserDto user);
-    Task<Result<string>> GetJwtToken(UserLoginDto userLogin);
-    Task<IEnumerable<UserViewDto>> GetAllUsers();
+    Task<Result> CreateUserAsync(UserDto user);
+    Task<Result<string>> GetJwtTokenAsync(UserLoginDto userLogin);
+    Task<Result<IEnumerable<UserViewDto>>> GetAllUsersAsync();
 }
 
 public class UserService : IUserService
@@ -23,17 +23,17 @@ public class UserService : IUserService
         _mediator = mediator;
     }
 
-    public async Task<Result> CreateUser(UserDto user)
+    public async Task<Result> CreateUserAsync(UserDto user)
     {
         return await _mediator.Send(new CreateUserCommand { User = user });
     }
 
-    public async Task<Result<string>> GetJwtToken(UserLoginDto userLogin)
+    public async Task<Result<string>> GetJwtTokenAsync(UserLoginDto userLogin)
     {
         return await _mediator.Send(new LoginUserQuery { UserLogin = userLogin });
     }
 
-    public async Task<IEnumerable<UserViewDto>> GetAllUsers()
+    public async Task<Result<IEnumerable<UserViewDto>>> GetAllUsersAsync()
     {
         return await _mediator.Send(new GetAllUsersQuery());
     }

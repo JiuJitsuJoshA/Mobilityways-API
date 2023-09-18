@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace MobilitywaysAPI.Application.Users.Queries.GetAllUsers;
 
-public record GetAllUsersQuery() : IRequest<IEnumerable<UserViewDto>>;
+public record GetAllUsersQuery() : IRequest<Result.Result<IEnumerable<UserViewDto>>>;
 
-public class Handler : IRequestHandler<GetAllUsersQuery, IEnumerable<UserViewDto>>
+public class Handler : IRequestHandler<GetAllUsersQuery, Result.Result<IEnumerable<UserViewDto>>>
 {
     private readonly IRepository<User> _userRepository;
 
@@ -21,12 +21,23 @@ public class Handler : IRequestHandler<GetAllUsersQuery, IEnumerable<UserViewDto
         _userRepository = userRepository;
     }
 
-    public async Task<IEnumerable<UserViewDto>> Handle(GetAllUsersQuery request, CancellationToken cancellationToken)
+    public async Task<Result.Result<IEnumerable<UserViewDto>>> Handle(GetAllUsersQuery request, CancellationToken cancellationToken)
     {
-        return _userRepository.GetAll().Select(_ => new UserViewDto
+        try
         {
-            Name = _.Name,
-            Email = _.Email,
-        });
+            var users = _userRepository.GetAll().Select(_ => new UserViewDto
+            {
+                Name = _.Name,
+                Email = _.Email,
+            }).AsEnumerable();
+
+            return Result.Result.Success(Result.ResultType.Ok, users, string.Empty);
+        }
+        catch (Exception ex) 
+        {
+            // Log exception here
+
+            return Result.Result.Exception<IEnumerable<UserViewDto>>();
+        }
     }
 }
