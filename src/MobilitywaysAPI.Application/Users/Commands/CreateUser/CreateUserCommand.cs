@@ -26,6 +26,6 @@ public class Handler : IRequestHandler<CreateUserCommand>
 
     public async Task Handle(CreateUserCommand request, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        // TODO: Check user does not already exists, hash password and then save to DB
     }
 }

@@ -11,6 +11,10 @@ builder.Services.AddMediatR(_ => _.RegisterServicesFromAssembly(Assembly.Load("M
 
 var app = builder.Build();
 
-app.MapPost("/api/users/createuser", async (UserDto user, IUserService userService) => await userService.CreateUser(user));
+app.MapPost("/api/user/CreateUser", async (UserDto user, IUserService userService) => await userService.CreateUser(user));
+
+app.MapPost("api/user/GetJWTToken", async (UserLoginDto userLogin, IUserService userService) => await userService.GetJwtToken(userLogin));
+
+app.MapGet("api/user/ListUsers", async (IUserService userService) => await userService.GetAllUsers());
 
 app.Run();
