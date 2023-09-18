@@ -7,10 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.11" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MobilitywaysAPI.Application\MobilitywaysAPI.Application.csproj" />
     <ProjectReference Include="..\MobilitywaysAPI.Domain\MobilitywaysAPI.Domain.csproj" />
   </ItemGroup>
 

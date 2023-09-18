@@ -34,7 +34,7 @@ public class Handler : IRequestHandler<CreateUserCommand, Result.Result>
         {
             var userExists = _userRepository.GetAll().Any(_ => _.Email.Equals(request.User.Email, StringComparison.InvariantCultureIgnoreCase));
 
-            if (!userExists)
+            if (userExists)
             {
                 return Result.Result.Failure(ResultType.AlreadyExists, "user already exists");
             }
