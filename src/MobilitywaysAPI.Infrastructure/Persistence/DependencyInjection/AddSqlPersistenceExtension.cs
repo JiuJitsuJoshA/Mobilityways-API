@@ -8,7 +8,7 @@ public static class AddSqlPersistenceExtension
 {
     public static IServiceCollection AddSqlPersistence(this IServiceCollection serviceCollection)
     {
-        return serviceCollection.AddDbContext<MobilitywaysDbContext>(_ => _.UseInMemoryDatabase("Users"), optionsLifetime: ServiceLifetime.Transient)
+        return serviceCollection.AddDbContext<MobilitywaysDbContext>(_ => _.UseInMemoryDatabase("Users"), optionsLifetime: ServiceLifetime.Singleton)
                                 .AddTransient(typeof(IRepository<>), typeof(Repository<>));
     }
 }
