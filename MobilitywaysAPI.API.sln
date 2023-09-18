@@ -15,6 +15,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{E711DE3F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobilitywaysAPI.UnitTests", "test\MobilitywaysAPI.UnitTests\MobilitywaysAPI.UnitTests.csproj", "{D9EA77CE-52F0-4554-885F-24C58B560FD0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{B0DFC668-710E-4925-95C8-10E854208CA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobilitywayAPI.Shared", "src\MobilitywayAPI.Shared\MobilitywayAPI.Shared.csproj", "{678208DA-BF46-4561-BA54-F38BB6D1B0BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,12 +45,17 @@ Global
 		{D9EA77CE-52F0-4554-885F-24C58B560FD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9EA77CE-52F0-4554-885F-24C58B560FD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9EA77CE-52F0-4554-885F-24C58B560FD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{678208DA-BF46-4561-BA54-F38BB6D1B0BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{678208DA-BF46-4561-BA54-F38BB6D1B0BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{678208DA-BF46-4561-BA54-F38BB6D1B0BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{678208DA-BF46-4561-BA54-F38BB6D1B0BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D9EA77CE-52F0-4554-885F-24C58B560FD0} = {E711DE3F-30D4-4F64-9F9C-2CE7AE5F7499}
+		{678208DA-BF46-4561-BA54-F38BB6D1B0BA} = {B0DFC668-710E-4925-95C8-10E854208CA5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {99A77948-D6C0-40F5-BD5C-21F07F3CDE9C}
