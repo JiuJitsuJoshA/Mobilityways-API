@@ -23,7 +23,17 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.MapPost("/api/user/CreateUser", async (UserDto user, IUserService userService) => await userService.CreateUser(user));
+app.MapPost("/api/user/CreateUser", async (UserDto user, IUserService userService) =>
+{
+    var result = await userService.CreateUser(user);
+
+    if (!result.IsSuccess)
+    {
+        return Results.BadRequest(result.Message);
+    }
+
+    return Results.Created("/api/user/CreateUser", result.Message);
+});
 
 app.MapPost("api/user/GetJWTToken", async (UserLoginDto userLogin, IUserService userService) => await userService.GetJwtToken(userLogin));
 

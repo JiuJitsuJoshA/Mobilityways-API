@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using MobilitywayAPI.Shared;
+using MobilitywaysAPI.Application.Result;
 using MobilitywaysAPI.Application.Users.Commands.CreateUser;
 using MobilitywaysAPI.Application.Users.Queries.GetAllUsers;
 using MobilitywaysAPI.Application.Users.Queries.Login;
@@ -8,7 +9,7 @@ namespace MobilitywaysAPI.API.Services;
 
 public interface IUserService
 {
-    Task CreateUser(UserDto user);
+    Task<Result> CreateUser(UserDto user);
     Task<string> GetJwtToken(UserLoginDto userLogin);
     Task<IEnumerable<UserViewDto>> GetAllUsers();
 }
@@ -22,9 +23,9 @@ public class UserService : IUserService
         _mediator = mediator;
     }
 
-    public async Task CreateUser(UserDto user)
+    public async Task<Result> CreateUser(UserDto user)
     {
-        await _mediator.Send(new CreateUserCommand { User = user });
+        return await _mediator.Send(new CreateUserCommand { User = user });
     }
 
     public async Task<string> GetJwtToken(UserLoginDto userLogin)
