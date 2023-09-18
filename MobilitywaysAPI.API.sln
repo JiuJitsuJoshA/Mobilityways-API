@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.33913.275
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobilitywaysAPI.API", "src\MobilitywaysAPI.API\MobilitywaysAPI.API.csproj", "{F9DA2D60-E00C-439C-913E-D5D90B0298F8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobilitywaysAPI.Application", "src\MobilitywaysAPI.Application\MobilitywaysAPI.Application.csproj", "{780CC6D5-7ED5-472B-BEDC-6A76B436D7F3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobilitywaysAPI.Domain", "src\MobilitywaysAPI.Domain\MobilitywaysAPI.Domain.csproj", "{7A9D15B9-38CF-4ECD-911A-C96725A4E2CE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobilitywaysAPI.Infrastructure", "src\MobilitywaysAPI.Infrastructure\MobilitywaysAPI.Infrastructure.csproj", "{E9FE8B83-7202-478A-BE0C-C5CFF7C73152}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{E711DE3F-30D4-4F64-9F9C-2CE7AE5F7499}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobilitywaysAPI.UnitTests", "test\MobilitywaysAPI.UnitTests\MobilitywaysAPI.UnitTests.csproj", "{D9EA77CE-52F0-4554-885F-24C58B560FD0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F9DA2D60-E00C-439C-913E-D5D90B0298F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9DA2D60-E00C-439C-913E-D5D90B0298F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9DA2D60-E00C-439C-913E-D5D90B0298F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9DA2D60-E00C-439C-913E-D5D90B0298F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{780CC6D5-7ED5-472B-BEDC-6A76B436D7F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{780CC6D5-7ED5-472B-BEDC-6A76B436D7F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{780CC6D5-7ED5-472B-BEDC-6A76B436D7F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{780CC6D5-7ED5-472B-BEDC-6A76B436D7F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A9D15B9-38CF-4ECD-911A-C96725A4E2CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A9D15B9-38CF-4ECD-911A-C96725A4E2CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A9D15B9-38CF-4ECD-911A-C96725A4E2CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A9D15B9-38CF-4ECD-911A-C96725A4E2CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9FE8B83-7202-478A-BE0C-C5CFF7C73152}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9FE8B83-7202-478A-BE0C-C5CFF7C73152}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9FE8B83-7202-478A-BE0C-C5CFF7C73152}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9FE8B83-7202-478A-BE0C-C5CFF7C73152}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9EA77CE-52F0-4554-885F-24C58B560FD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9EA77CE-52F0-4554-885F-24C58B560FD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9EA77CE-52F0-4554-885F-24C58B560FD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9EA77CE-52F0-4554-885F-24C58B560FD0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D9EA77CE-52F0-4554-885F-24C58B560FD0} = {E711DE3F-30D4-4F64-9F9C-2CE7AE5F7499}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {99A77948-D6C0-40F5-BD5C-21F07F3CDE9C}
+	EndGlobalSection
+EndGlobal
