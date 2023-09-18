@@ -1,6 +1,8 @@
 using MobilitywayAPI.Shared;
 using MobilitywaysAPI.API.Services;
+using MobilitywaysAPI.Application.Interfaces;
 using MobilitywaysAPI.Infrastructure.Persistence.DependencyInjection;
+using MobilitywaysAPI.Infrastructure.Services;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +12,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddSqlPersistence();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IPasswordService, PasswordService>();
 builder.Services.AddMediatR(_ => _.RegisterServicesFromAssembly(Assembly.Load("MobilitywaysAPI.Application")));
 
 var app = builder.Build();

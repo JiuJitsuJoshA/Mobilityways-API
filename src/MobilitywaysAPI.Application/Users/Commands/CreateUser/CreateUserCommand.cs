@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using MobilitywayAPI.Shared;
+using MobilitywaysAPI.Application.Interfaces;
 using MobilitywaysAPI.Domain;
 using MobilitywaysAPI.Domain.Entities;
 using System;
@@ -18,14 +19,28 @@ public record CreateUserCommand : IRequest
 public class Handler : IRequestHandler<CreateUserCommand>
 {
     private readonly IRepository<User> _userRepository;
+    private readonly IPasswordService _passwordService;
 
-    public Handler(IRepository<User> userRepository)
+    public Handler(IRepository<User> userRepository, IPasswordService passwordService)
     {
         _userRepository = userRepository;
+        _passwordService = passwordService;
     }
 
     public async Task Handle(CreateUserCommand request, CancellationToken cancellationToken)
     {
-        // TODO: Check user does not already exists, hash password and then save to DB
+        var userExists = _userRepository.GetAll().Any(_ => _.Email.Equals(request.User.Email, StringComparison.InvariantCultureIgnoreCase));
+
+        if (!userExists)
+        {
+            // Return user already exists
+        }
+
+        var passwordHash = _passwordService.HashPassword(request.User.Password);
+
+        var userToAdd = new User(request.User.Name, request.User.Email, passwordHash);
+
+        await _userRepository.AddAsync(userToAdd);
+        await _userRepository.SaveChangesAsync();
     }
 }
