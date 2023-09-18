@@ -25,7 +25,7 @@ public class Handle
         var command = CreateUserCommand();
 
         _mockUserRepository.Setup(_ => _.GetAll()).Returns(users.AsQueryable());
-        _mockPasswordService.Setup(x => x.HashPassword(It.IsAny<string>())).Returns(It.IsAny<string>());
+        _mockPasswordService.Setup(_ => _.HashPassword(It.IsAny<string>())).Returns(It.IsAny<string>());
 
         var sut = new Handler(_mockUserRepository.Object, _mockPasswordService.Object);
 
@@ -50,7 +50,7 @@ public class Handle
         var command = CreateUserCommand(existingUser.Email);
 
         _mockUserRepository.Setup(_ => _.GetAll()).Returns(allUsers.AsQueryable());
-        _mockPasswordService.Setup(x => x.HashPassword(It.IsAny<string>())).Returns(It.IsAny<string>());
+        _mockPasswordService.Setup(_ => _.HashPassword(It.IsAny<string>())).Returns(It.IsAny<string>());
 
         var sut = new Handler(_mockUserRepository.Object, _mockPasswordService.Object);
 
@@ -73,7 +73,7 @@ public class Handle
 
         _mockUserRepository.Setup(_ => _.GetAll()).Returns(users.AsQueryable());
 
-        _mockPasswordService.Setup(x => x.HashPassword(It.IsAny<string>())).Throws<Exception>();
+        _mockPasswordService.Setup(_ => _.HashPassword(It.IsAny<string>())).Throws<Exception>();
 
         var sut = new Handler(_mockUserRepository.Object, _mockPasswordService.Object);
 
