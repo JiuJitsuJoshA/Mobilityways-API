@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using MobilitywayAPI.Shared;
+using MobilitywaysAPI.API.Endpoints;
 using MobilitywaysAPI.API.Services;
 using MobilitywaysAPI.Application.Interfaces;
 using MobilitywaysAPI.Application.Result;
@@ -42,51 +43,13 @@ builder.Services.AddMediatR(_ => _.RegisterServicesFromAssembly(Assembly.Load("M
 
 var app = builder.Build();
 
+app.MapUserEndpoints();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
-app.MapPost("/api/user/CreateUser", async (UserDto user, IUserService userService) =>
-{
-    var result = await userService.CreateUserAsync(user);
-
-    if (!result.IsSuccess)
-    {
-        return Results.BadRequest(result.Message);
-    }
-
-    return Results.Created("/api/user/CreateUser", result.Message);
-});
-
-app.MapPost("api/user/GetJWTToken", async (UserLoginDto userLogin, IUserService userService) =>
-{
-    var result = await userService.GetJwtTokenAsync(userLogin);
-
-    if (!result.IsSuccess)
-    {
-        return Results.BadRequest(result.Message);
-    }
-
-    return Results.Ok(result.Value);
-});
-
-app.MapGet("api/user/ListUsers", async (IUserService userService) =>
-{
-    var result = await userService.GetAllUsersAsync();
-
-    if (!result.IsSuccess)
-    {
-        if (result.Type == ResultType.NotFound)
-        {
-            return Results.NotFound(result.Message);
-        }
-    }
-
-    return Results.Ok(result.Value);
-})
-.RequireAuthorization();
 
 app.UseHttpsRedirection();
 app.UseAuthentication();
