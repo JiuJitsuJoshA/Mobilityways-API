@@ -4,6 +4,7 @@ using MobilitywaysAPI.Application.Result;
 using MobilitywaysAPI.Application.Users.Commands.CreateUser;
 using MobilitywaysAPI.Application.Users.Queries.GetAllUsers;
 using MobilitywaysAPI.Application.Users.Queries.Login;
+using MobilitywaysAPI.Application.Users.Queries.ValidateUser;
 
 namespace MobilitywaysAPI.API.Services;
 
@@ -12,6 +13,7 @@ public interface IUserService
     Task<Result> CreateUserAsync(UserDto user);
     Task<Result<string>> GetJwtTokenAsync(UserLoginDto userLogin);
     Task<Result<IEnumerable<UserViewDto>>> GetAllUsersAsync();
+    Task<Result> ValidateUser(string email);
 }
 
 public class UserService : IUserService
@@ -36,5 +38,10 @@ public class UserService : IUserService
     public async Task<Result<IEnumerable<UserViewDto>>> GetAllUsersAsync()
     {
         return await _mediator.Send(new GetAllUsersQuery());
+    }
+
+    public async Task<Result> ValidateUser(string email)
+    {
+        return await _mediator.Send(new ValidateUserQuery(email));
     }
 }
